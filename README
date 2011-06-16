@@ -1,0 +1,40 @@
+devel-sublist version 0.01
+
+An easy way to see what methods package has and why
+
+INSTALLATION
+
+To install this module, run the following commands:
+
+    perl Makefile.PL
+    make
+    make test
+    make install
+
+
+SYNOPSIS
+
+Oneliners:
+
+    perl -MDevel::Sublist=Scalar::Util
+    perl -MDevel::Sublist=Scalar::Util,verbose
+
+Perl code:
+
+    package Foo;
+    use Devel::Sublist 'verbose';
+
+    print Devel::Sublist
+
+
+DEPENDENCIES
+
+None.
+
+
+COPYRIGHT AND LICENCE
+
+Copyright (C) 2011, Yaroslav Korshak
+
+This library is free software; you can redistribute it and/or modify
+it under the same terms as Perl itself.
