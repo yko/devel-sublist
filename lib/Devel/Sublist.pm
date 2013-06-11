@@ -173,7 +173,7 @@ sub import {
     }
 
     no strict 'refs';
-    *{caller . '::dump_methods'} = \&dump_methods;
+    *{caller() . '::dump_methods'} = \&dump_methods;
     use strict;
 }
 
