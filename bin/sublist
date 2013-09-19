@@ -1,0 +1,60 @@
+#!/usr/bin/perl
+
+use warnings;
+use strict;
+
+use File::Basename;
+use Getopt::Long;
+use Pod::Usage;
+
+use Devel::Sublist;
+
+my %opts = (verbose => 0);
+GetOptions(
+    'h|help'    => sub { pod2usage(1) },
+    'v|verbose' => \$opts{verbose}
+);
+
+pod2usage(-message => basename($0) . ": Package name required.\n")
+  unless @ARGV;
+
+pod2usage(-message => basename($0) . ": Too many argumets given.\n")
+  if @ARGV > 1;
+
+$opts{module_name} = $ARGV[0];
+
+my $dump = dump_methods($opts{module_name}, $opts{verbose});
+print $dump, "\n";
+
+exit(0);
+
+__END__
+
+=head1 NAME
+
+sublist - lists package methods
+
+=head1 SYNOPSIS
+
+sublist [options] <package name>
+
+    Options:
+    --help            brief help message
+    --verbose         detailed output
+
+=head1 OPTIONS
+
+=over 8
+
+=item B<--help>
+
+Print a brief help message and exits.
+
+=back
+
+=head1 DESCRIPTION
+
+B<sublist> loads a package and prints all methods defined within package's
+namespace, optionally identifying where the meod was defined.
+
+=cut

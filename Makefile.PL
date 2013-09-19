@@ -7,11 +7,16 @@ license 'perl';
 
 build_requires 'Test::More';
 
-requires 'Carp';
-requires 'List::Util';
 requires 'B';
+requires 'Carp';
+requires 'File::Basename';
+requires 'Getopt::Long';
+requires 'List::Util';
+requires 'Pod::Usage';
 
 resources license => "http://dev.perl.org/licenses";
+
+install_script('bin/sublist');
 
 auto_install;
 
