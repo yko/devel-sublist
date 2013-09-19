@@ -153,6 +153,11 @@ sub defined_elsewhere {
 
 sub import {
     my $class = shift;
+
+    no strict 'refs';
+    *{caller() . '::dump_methods'} = \&dump_methods;
+    use strict;
+
     return unless @_;
 
     my $package;
@@ -171,10 +176,6 @@ sub import {
         print "Subroutines available in package '$package':\n$dump\n";
         exit;
     }
-
-    no strict 'refs';
-    *{caller() . '::dump_methods'} = \&dump_methods;
-    use strict;
 }
 
 1;
